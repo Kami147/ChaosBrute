@@ -1,2 +1,1 @@
-# tokenbrute
-Token bruteforcer for discord.com
+Just put your token where it needs to be, open the file "main.py" in a terminal and type "python3 main.py"
