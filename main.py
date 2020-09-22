@@ -46,6 +46,6 @@ def gen(encodedid, encodedstamp):
         print(f'{C.WHITE}{token} {C.BLACK}: {C.RED}Invalid')
 
 
-token = os.environ.get("YOUR BOT TOKEN HERE")
+token = os.environ.get("TOKEN")
 client = MyClient()
-client.run("YOUR BOT TOKEN HERE", bot=False)
+client.run("TOKEN", bot=False)
